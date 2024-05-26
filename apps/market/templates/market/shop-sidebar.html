@@ -1,0 +1,224 @@
+{%extends "detector/index.html"%} {%block title%}HOME{%endblock%}zw {%block
+content%}
+<body class="homepage">
+  <div class="preloader text-white fs-6 text-uppercase overflow-hidden"></div>
+
+  <!-- トップ画面の画像 -->
+  <section class="hero-section jarallax">
+    <div class="img-wrap2">
+      <img
+        src="{{url_for('static', filename='images/closet4.png')}}"
+        class="jarallax-img" />
+    </div>
+    <div class="py-5">
+      <div class="container">
+        <div class="row mt-5">
+          <div
+            class="d-flex flex-wrap flex-column justify-content-center align-items-center my-5 py-5 text-white">
+            <h1 class="page-title text-uppercase mt-5 display-4">Shop</h1>
+            <nav class="breadcrumb text-white">
+              <a class="breadcrumb-item" href="{{url_for('detector.index')}}"
+                >Home</a
+              >
+              <a class="breadcrumb-item" href="#">Pages</a>
+              <span class="breadcrumb-item active" aria-current="page"
+                >Shop</span
+              >
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 商品カテゴリページ -->
+  <div class="py-5">
+    <div class="container">
+      <div class="row flex-md-row-reverse g-5">
+        <main class="main-content col-md-9">
+          <div class="row py-2">
+            <div class="col-md-9">
+              <span>商品一覧</span>
+            </div>
+            <div class="col-md-3">
+              <select
+                class="form-select border-0"
+                aria-label="Default select example">
+                <option selected>All</option>
+                <option value="1">MEN</option>
+                <option value="2">WOMEN</option>
+                <option value="3">UNISEX</option>
+                <option value="4">その他</option>
+              </select>
+            </div>
+          </div>
+          <div class="row my-5">
+            {% for product in products %}
+            <div class="col-md-4 mb-5 product-item">
+              <div class="image-holder position-relative">
+                <a href="{{url_for('market.detail', id=product.id)}}">
+                  <img
+                    src="{{url_for('detector.image_file',filename=product.image_path)}}"
+                    alt="categories"
+                    class="product-image img-fluid" />
+                </a>
+                <!-- お気に入り機能 -->
+                <a
+                  href="{{url_for('market.favorite', id=product.id)}}"
+                  class="btn-icon btn-wishlist">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    class="svg-color">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+
+                <div class="product-content">
+                  <h5 class="element-title text-uppercase fs-6 mt-3">
+                    <a href="{{url_for('market.detail', id=product.id)}}"
+                      >{{product.image_name}}</a
+                    >
+                  </h5>
+                  <a
+                    href="#"
+                    class="text-decoration-none"
+                    data-after="Add to cart"
+                    ><span>{{product.price}}円</span></a
+                  >
+                  {% if product.sold == True %}
+                  <h6 class="text-uppercase fs-6 mt-3" style="color: red">
+                    SOLD
+                  </h6>
+                  {% elif product.rental == True %}
+                  <h6 class="text-uppercase fs-6 mt-3" style="color: red">
+                    RENTALED
+                  </h6>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </main>
+
+        <aside class="col-md-3">
+          <div class="sidebar">
+            <div class="sidebar-categories border-animation-left mb-5">
+              <div class="text-dark text-uppercase mb-4">
+                <b>商品カテゴリ:</b>
+              </div>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="{{url_for('market.shop')}}" class="item-anchor"
+                    >All</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{{url_for('market.shopcategory', key=1)}}"
+                    class="item-anchor"
+                    >MEN</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{{url_for('market.shopcategory', key=2)}}"
+                    class="item-anchor"
+                    >WOMEN</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{{url_for('market.shopcategory', key=3)}}"
+                    class="item-anchor"
+                    >UNISEX</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="{{url_for('market.shopcategory', key=4)}}"
+                    class="item-anchor"
+                    >その他</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="product-filter padding-small">
+              <div class="text-dark text-uppercase"><b>検索条件:</b></div>
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <div class="accordion-header" id="heading-one">
+                    <button
+                      class="accordion-button py-3"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-one"
+                      aria-expanded="true"
+                      aria-controls="collapse-one">
+                      <span class="accordion-title fs-3">Price</span>
+                    </button>
+                  </div>
+                  <div
+                    id="collapse-one"
+                    class="accordion-collapse collapse show"
+                    aria-labelledby="heading-one">
+                    <div class="accordion-body">
+                      <a href="{{url_for('market.shopprice', price=1)}}"
+                        >1,000円 - 2,000円</a
+                      >
+                      <a href="{{url_for('market.shopprice', price=2)}}"
+                        >2,000円 - 3,000円</a
+                      >
+                      <a href="{{url_for('market.shopprice', price=3)}}"
+                        >3,000円 - 4,000円</a
+                      >
+                      <a href="{{url_for('market.shopprice', price=4)}}"
+                        >4,000円 - 5,000円</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <div class="accordion-header" id="heading-two">
+                    <button
+                      class="accordion-button py-3"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-two"
+                      aria-expanded="true"
+                      aria-controls="collapse-two">
+                      <span class="accordion-title fs-3">Size</span>
+                    </button>
+                  </div>
+                  <div
+                    id="collapse-two"
+                    class="accordion-collapse collapse show"
+                    aria-labelledby="heading-two">
+                    <div class="accordion-body">
+                      <a href="{{url_for('market.shopsize', key=1)}}">XS</a>
+                      <a href="{{url_for('market.shopsize', key=2)}}">S</a>
+                      <a href="{{url_for('market.shopsize', key=3)}}">M</a>
+                      <a href="{{url_for('market.shopsize', key=4)}}">L</a>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="#" class="btn-link text-uppercase item-anchor"
+                  >Reset All Filters</a
+                >
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6 text-md-end mt-3 mt-md-0">
+    <p>© Copyright 2023. All rights reserved. Design by Cloth Charm</p>
+  </div>
+
+  {%endblock%}
+</body>

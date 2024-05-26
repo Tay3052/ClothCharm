@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>出品内容入力</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/toukou.css')}}" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/style.css')}}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Prata&display=swap"
+      rel="stylesheet" />
+
+    <div class="container">
+      <div class="right">
+        <h1><b>出品内容入力フォーム</b></h1>
+        <form
+          action="{{ url_for('detector.upload_images') }}"
+          method="post"
+          enctype="multipart/form-data"
+          novalidate="novalidate">
+          {{ form.csrf_token }}
+          <div>
+            <label>
+              <span
+                >{{ form.title(size=30, class="form-control",
+                placeholder="商品名") }}</span
+              > </label
+            ><br />
+
+            <label>
+              <span
+                >{{ form.sexual(class="form-control", placeholder="性別")
+                }}</span
+              > </label
+            ><br />
+
+            <label>
+              <span
+                >{{ form.explain(class="form-control", placeholder="説明")
+                }}</span
+              > </label
+            ><br />
+
+            <label>
+              <span
+                >{{ form.category(class="form-control",
+                placeholder="カテゴリー") }}</span
+              > </label
+            ><br />
+
+            <label>
+              <span
+                >{{ form.size(class="form-control", placeholder="サイズ")
+                }}</span
+              > </label
+            ><br />
+
+            <label>
+              <span
+                >{{ form.condition(class="form-control", placeholder="状態")
+                }}</span
+              > </label
+            ><br />
+
+            <label>
+              <span
+                >{{ form.price(class="form-control", placeholder="値段")
+                }}</span
+              > </label
+            ><br />
+
+            <label>
+              <span
+                >{{ form.send(class="form-control", placeholder="発送") }}</span
+              > </label
+            ><br />
+
+            <label>
+              <span> {{ form.image(class="form-control-file") }} </span>
+            </label>
+          </div>
+          {% for error in form.image.errors %}
+          <span style="color: red">{{ error }}</span>
+          {% endfor %}
+          <hr />
+          <div>
+            <label> {{ form.submit(class="btn btn-primary") }} </label>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="{{url_for('static', filename='js/toukou.js')}}"></script>
+  </head>
+</html>

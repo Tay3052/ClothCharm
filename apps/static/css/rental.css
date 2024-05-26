@@ -1,0 +1,215 @@
+h1 {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+img {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 50px 0 300px;
+    display: block;
+}
+
+.flex .right {
+    margin: 20px 0px 0px 0px;
+    width: 100%;
+}
+
+p {
+    margin: 0 0 0 20px;
+}
+
+.flex .title {
+    font-weight: bold;
+    border-bottom: 1.3px solid;
+    width: 55%;
+}
+
+.flex .text {
+    margin: 40px 0 0 20px;
+    border-bottom: 1.3px solid;
+    width: 55%;
+}
+
+.radio{
+    margin: 87px 0 0 0;
+}
+
+.flex .text .space{
+    margin: 0 170px 0 0;
+}
+
+.flex .text .space2{
+    margin: 0 222px 0 0;
+}
+
+.flex .space3{
+    margin: 0 212px 0 0;
+}
+
+.flex .text .space,
+.flex .text .space2,
+.flex .space3 {
+    letter-spacing: 0;
+}
+
+@media only screen and (min-width: 600px) {
+    .flex .right {
+        width: 40%;
+    }
+}
+
+
+.link-overlay {
+    width: 22%;
+    margin: 165px 0 0 235px;
+    text-align: center;
+    bottom: 0;
+    right: 0;
+}
+
+.link-overlay a {
+    
+    padding: 10px;
+    border: 2px solid black;    
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+
+}
+
+.link-overlay a:hover{
+    background-color: black;
+    color: white; 
+}
+/* 
+.payment-button-container button {
+    margin: 45px 0 0 0;
+    width: 60%;
+    background-color: white; 
+    color: black; 
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 20px; 
+    border: 2px solid black;
+    border-radius: 5px; 
+    cursor: pointer;
+} */
+
+.payment-button-container button:hover {
+    background-color: black;
+    color: white; 
+}
+
+.payment-button-container button {
+    margin: 45px 0 0 20px;
+    /* width: 25%; */
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+.creditCardForm {
+    max-width: 700px;
+    background-color: #fff;
+    margin: 100px auto;
+    overflow: hidden;
+    padding: 25px;
+    color: #4c4e56;
+}
+.creditCardForm label {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.creditCardForm .heading h1 {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    color: #4c4e56;
+}
+.creditCardForm .payment {
+    float: left;
+    font-size: 18px;
+    padding: 10px 25px;
+    margin-top: 20px;
+    position: relative;
+}
+.creditCardForm .payment .form-group {
+    float: left;
+    margin-bottom: 15px;
+}
+.creditCardForm .payment .form-control {
+    line-height: 40px;
+    height: auto;
+    padding: 0 16px;
+}
+.creditCardForm .owner {
+    width: 45%;
+   
+}
+.creditCardForm .CVV {
+    width: 45%;
+}
+.creditCardForm #card-number-field {
+    width: 100%;
+}
+.creditCardForm #expiration-date {
+    width: 49%;
+}
+.creditCardForm #credit_cards {
+    width: 50%;
+    margin-top: 25px;
+    text-align: right;
+}
+.creditCardForm #pay-now {
+    width: 100%;
+    margin-top: 25px;
+}
+.creditCardForm .payment .btn {
+    width: 100%;
+    margin-top: 3px;
+    font-size: 24px;
+    background-color: white;
+    color: black;
+}
+.creditCardForm .payment select {
+    padding: 10px;
+    margin-right: 15px;
+}
+.transparent {
+    opacity: 0.2;
+}
+@media(max-width: 650px) {
+    .creditCardForm .owner,
+    .creditCardForm .CVV,
+    .creditCardForm #expiration-date,
+    .creditCardForm #credit_cards {
+        width: 100%;
+    }
+    .creditCardForm #credit_cards {
+        text-align: left;
+    }
+}
+
+/* フォントの埋め込み */
+body{
+    font-family: var(--heading-font);
+    --heading-font: 'Prata', serif;
+}
+
+.payment-button-container button{
+    font-family: var(--heading-font);
+    --heading-font: 'Prata', serif;
+}

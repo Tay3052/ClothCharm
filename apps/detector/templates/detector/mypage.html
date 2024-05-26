@@ -1,0 +1,111 @@
+{%extends "detector/index.html"%} {%block title%}マイページ{%endblock%} {%block
+content%}
+<body>
+  <link
+    rel="stylesheet"
+    href="{{url_for('static', filename='css/mypage.css')}}" />
+
+  <header>
+    <div class="container">
+      <div class="profile">
+        <div class="profile-image">
+          <img
+            src="{{url_for('detector.image_file',filename=users.icon_path)}}"
+            width="152px"
+            height="152px"
+            alt="アイコン" />
+        </div>
+
+        <div class="profile-user-settings">
+          <h1 class="profile-user-name">{{users.username}}</h1>
+
+          <button class="btn profile-edit-btn">
+            <a href="{{url_for('detector.editprofile', id=users.id)}}"
+              >プロフィールを編集</a
+            >
+          </button>
+
+          <button
+            class="btn profile-settings-btn"
+            aria-label="profile settings">
+            <i class="fas fa-cog" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="profile-stats">
+          <ul>
+            <li><span class="profile-stat-count">30</span> 出品</li>
+            <li><span class="profile-stat-count">188</span> フォロワ―</li>
+            <li><span class="profile-stat-count">206</span> フォロー中</li>
+          </ul>
+        </div>
+
+        <div class="profile-bio">
+          <h3>Profile</h3>
+          <p>{{users.profile}}</p>
+        </div>
+      </div>
+      <!-- End of profile section -->
+    </div>
+    <!-- End of container -->
+  </header>
+
+  <main>
+    {%for image in user_images%}
+    <div class="card col-md-7 dt-image-content">
+      <header class="d-flex justify-content-between">
+        <div class="dt-image-username" style="font-size: 20px">
+          {{image.image_name}} {% if image.sold == True%}
+          <span class="badge bg-danger">売却済み</span>
+          {%endif%} {%if image.rental == True%}
+          <span class="badge bg-danger">レンタル済み</span>
+          {%endif%}
+        </div>
+        <div class="p-2">
+          <form
+            action="{{url_for('detector.delete_image', image_id=image.id)}}"
+            method="post">
+            {{delete_form.csrf_token}} {%if current_user.id == image.user_id %}
+            {{delete_form.submit(class="btn btn-danger",
+            style="font-size:15px")}} {%else%} {{delete_form.submit(class="btn
+            btn-danger", disabled="disabled")}} {%endif%}
+          </form>
+        </div>
+      </header>
+      <div class="gallery-item" tabindex="0">
+        <img
+          src="{{url_for('detector.image_file',filename=image.image_path)}}"
+          class="gallery-image"
+          alt="" />
+
+        <div class="gallery-item-info">
+          <ul>
+            <li class="gallery-item-likes">
+              <span class="visually-hidden">Likes：</span
+              ><i class="fas fa-heart" aria-hidden="true"
+                >Name：{{image.image_name}}
+              </i>
+            </li>
+            <li class="gallery-item-comments">
+              <span class="visually-hidden">Comments:</span
+              ><i class="fas fa-comment" aria-hidden="true"
+                >Price：{{image.price}}</i
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    {%endfor%}
+
+    <!-- End of container -->
+  </main>
+
+  <footer id="footer" class="mt-5">
+    <div class="col-md-6 text-md-end mt-3 mt-md-0">
+      <p>© Copyright 2023. All rights reserved. Design by Cloth Charm</p>
+    </div>
+    {%endblock%}
+  </footer>
+</body>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ファッション診断</title>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/fashiontest.css')}}" />
+  </head>
+  <body>
+    <div class="choose_box">
+      <!-- 質問一覧 -->
+      <div class="app-theme">
+        <p>ファッション診断(全5問)</p>
+      </div>
+
+      <div id="q_00" class="fit">
+        <p>　　　　　</p>
+        <ul>
+          <li><a class="btn" href="#q_01">女性</a></li>
+          <li><a class="btn" href="#q_06">男性</a></li>
+        </ul>
+      </div>
+
+      <!-- 質問1 -->
+      <div id="q_01" style="display: none">
+        <p>01: どんな時に着たい？　</p>
+        <ul>
+          <li><a class="btn" href="#q_02" data-value="a">普段使い</a></li>
+          <li><a class="btn" href="#q_02" data-value="b">特別なお出かけ</a></li>
+        </ul>
+      </div>
+
+      <!-- 質問2 -->
+      <div id="q_02" style="display: none">
+        <p>02:　服選びのポイントは？</p>
+        <ul>
+          <li><a class="btn" href="#q_03" data-value="a">機能性</a></li>
+          <li><a class="btn" href="#q_03" data-value="b">デザイン性</a></li>
+        </ul>
+      </div>
+
+      <!-- 質問3 -->
+      <div id="q_03" style="display: none">
+        <p>03:　どちらかといえば？</p>
+        <ul>
+          <li>
+            <a class="btn" href="#q_04" data-value="a">同性に好かれたい</a>
+          </li>
+          <li>
+            <a class="btn" href="#q_04" data-value="b">異性に好かれたい</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 質問4 -->
+      <div id="q_04" style="display: none">
+        <p>04:　なりたい雰囲気は？</p>
+        <ul>
+          <li><a class="btn" href="#q_05" data-value="a">可愛い系</a></li>
+          <li><a class="btn" href="#q_05" data-value="b">きれい系</a></li>
+        </ul>
+      </div>
+
+      <!-- 質問5 -->
+      <div id="q_05" style="display: none">
+        <p>05:　服選びで譲れないのは？</p>
+        <ul>
+          <li><a class="btn end" data-value="a">プチプラ価格</a></li>
+          <li><a class="btn end" data-value="b">デザイン重視！</a></li>
+        </ul>
+      </div>
+
+      <!-- 質問1 -->
+      <div id="q_06" style="display: none">
+        <p>01: どんな時に着たい？　</p>
+        <ul>
+          <li><a class="btn" href="#q_07" data-value="c">普段使い</a></li>
+          <li><a class="btn" href="#q_07" data-value="d">特別なお出かけ</a></li>
+        </ul>
+      </div>
+
+      <!-- 質問2 -->
+      <div id="q_07" style="display: none">
+        <p>02:　服選びのポイントは？</p>
+        <ul>
+          <li><a class="btn" href="#q_08" data-value="c">機能性</a></li>
+          <li><a class="btn" href="#q_08" data-value="d">デザイン性</a></li>
+        </ul>
+      </div>
+
+      <!-- 質問3 -->
+      <div id="q_08" style="display: none">
+        <p>03:　どちらかといえば？</p>
+        <ul>
+          <li>
+            <a class="btn" href="#q_09" data-value="c">同性に好かれたい</a>
+          </li>
+          <li>
+            <a class="btn" href="#q_09" data-value="d">異性に好かれたい</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 質問4 -->
+      <div id="q_09" style="display: none">
+        <p>04:　なりたい雰囲気は？</p>
+        <ul>
+          <li><a class="btn" href="#q_10" data-value="c">かっこいい系</a></li>
+          <li><a class="btn" href="#q_10" data-value="d">きれい系</a></li>
+        </ul>
+      </div>
+
+      <!-- 質問5 -->
+      <div id="q_10" style="display: none">
+        <p>05:　服選びで譲れないのは？</p>
+        <ul>
+          <li><a class="btn end" data-vlue="c">プチプラ価格</a></li>
+          <li><a class="btn end" data-vlue="d">デザイン重視！</a></li>
+        </ul>
+      </div>
+
+      <!-- ここから以下回答 -->
+      <!-- 回答の答え1 -->
+      <div id="answer_01" class="result" style="display: none">
+        <div class="result_theme">
+          <p>あなたのおすすめは</p>
+        </div>
+        <div class="result_type0">
+          <h4>『カジュアルテイスト』</h4>
+        </div>
+        <div class="result_discription0">
+          <h2>プチプラかつおしゃれなスタイルが好きな方におすすめ</h2>
+          <p>　普段使いにぴったりのアイテム多数</p>
+        </div>
+        <div class="return-btn">
+          <a class="return" href="index.html">もどる</a>
+        </div>
+      </div>
+
+      <!-- 回答の答え2 -->
+      <div id="answer_02" style="display: none">
+        <div class="result_theme">
+          <p>あなたのおすすめは</p>
+        </div>
+        <div class="result_type1">
+          <h4>『フェミニンテイスト』</h4>
+        </div>
+        <div class="result_discription1">
+          <h2>大人スタイルが好きな方におすすめ！</h2>
+          <p>　美人見え＆好印象間違いなし♪</p>
+        </div>
+        <div class="return-btn">
+          <a class="return" href="index.html">もどる</a>
+        </div>
+      </div>
+
+      <!-- 回答の答え3 -->
+      <div id="answer_03" class="result" style="display: none">
+        <div class="result_theme">
+          <p>あなたのおすすめは</p>
+        </div>
+        <div class="result_type0">
+          <h4>『大人のゆるカジュアルテイスト』</h4>
+        </div>
+        <div class="result_discription0">
+          <h2>ゆるっとしたカジュアルスタイルが好きな方におすすめ</h2>
+          <p>
+            　シューズやアウターはベーシックカラーでまとめて大人っぽさをキープ
+          </p>
+        </div>
+        <div class="return-btn">
+          <a class="return" href="index.html">もどる</a>
+        </div>
+      </div>
+
+      <!-- 回答の答え4 -->
+      <div id="answer_04" style="display: none">
+        <div class="result_theme">
+          <p>あなたのおすすめは</p>
+        </div>
+        <div class="result_type1">
+          <h4>『セレブタイプテイスト』</h4>
+        </div>
+        <div class="result_discription1">
+          <h2>大人スタイルが好きな方におすすめ！</h2>
+          <p>
+            　キレイ目なアイテムをサラッと合わし、クセがないのでほとんどの方が似合う！
+          </p>
+        </div>
+        <div class="return-btn">
+          <a href="{{url_for('market.shop')}}" class="return" >もどる</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="{{url_for('static', filename='js/fashiontest.js')}}"></script>
+  </body>
+</html>

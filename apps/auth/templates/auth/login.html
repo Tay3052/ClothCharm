@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ログイン・サインアップ</title>
+</head>
+	<link rel="stylesheet" type="text/css" href="{{url_for('auth.static', filename='login.css')}}">
+
+<body>
+	
+
+
+<h2>Welcome to Cloth Charm</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="{{ url_for('auth.login', next=request.args.get('next')) }}" method="post">
+			<h1>Create Account</h1>
+			{{ signupform.csrf_token }}
+
+			{% for message in get_flashed_messages() %}
+				<div class="dt-auth-flash">{{ message }}</div>
+			{% endfor %}
+
+			{{ signupform.username(size=30, class="form-control dt-auth-input", placeholder="ユーザー名") }}
+			{{ signupform.email(class="form-control dt-auth-input",placeholder="メールアドレス") }}
+			{{ signupform.password(class="form-control dt-auth-input",placeholder="パスワード") }}
+			{{ signupform.submit(class="btn btn-md btn-primary btn-block dt-auth-btn") }}
+		</form>
+	</div>
+
+	<div class="form-container sign-in-container">
+		<form action="{{ url_for('auth.login') }}" method="post">
+			<h1>LOGIN</h1>
+			{% for message in get_flashed_messages() %}
+				<span class="dt-auth-flash">{{ message }}</span>
+			{% endfor %}
+			{{ loginform.csrf_token }}
+			{{ loginform.email(class="form-control dt-auth-input",placeholder="メールアドレス") }}
+			{{ loginform.password(class="form-control dt-auth-input",placeholder="パスワード") }}
+			{{ loginform.submit(class="btn btn-md btn-primary btn-block dt-auth-btn") }}
+			<a href="#">Forgot your password?</a>
+		</form>
+	</div>
+
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>LOGIN</h1>
+				<p>こちらからログインしてください。</p>
+				<button class="ghost" id="signIn">LOGIN</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>ようこそ！</h1>
+				<p>新しくアカウントを作成してください。</p>
+				<button class="ghost" id="signUp">SIGN UP</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="{{url_for('auth.static', filename='login.js')}}"></script>
+
+
+</body>
+</html>

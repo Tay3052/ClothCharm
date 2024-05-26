@@ -1,0 +1,100 @@
+{%extends "detector/index.html"%} {%block title%}お気に入りリスト{%endblock%}
+{%block content%}
+<body class="homepage">
+  <main>
+    <section>
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mt-5">
+          <h4>お気に入りリスト</h4>
+          <nav class="breadcrumb fs-6">
+            <a class="breadcrumb-item nav-link" href="#">Home</a>
+            <a class="breadcrumb-item nav-link" href="#">Pages</a>
+            <span class="breadcrumb-item active" aria-current="page"
+              >Wishlist</span
+            >
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <section id="Wishlist" class="py-5 mb-5">
+      <div class="container">
+        <div class="row text-dark my-3">
+          <div class="col-5 text-uppercase">商品</div>
+          <div class="col-2 text-uppercase">価格</div>
+          <div class="col-2 text-uppercase">在庫</div>
+        </div>
+        {% for product in products %}
+        <div class="product-wrapper">
+          <div class="product-item row align-items-center mb-4">
+            <div class="col-4 col-md-1 d-flex align-items-center text-left">
+              <a href="{{url_for('market.detail', id=product.id)}}">
+                <img
+                  srcset="
+                    {{url_for('detector.image_file',filename=product.image_path)}}
+                  "
+                  alt="wishlist"
+                  class="img-fluid" />
+              </a>
+            </div>
+            <div class="col-8 col-md-4">
+              <h3 class="item-title text-uppercase fs-5">
+                <a href="{{url_for('market.detail', id=product.id)}}"
+                  >{{product.image_name}}</a
+                >
+              </h3>
+            </div>
+            <div class="col-3 col-md-2 product-price text-left">
+              <span class="item-price">{{product.price}}円</span>
+            </div>
+            {% if product.sold == True %}
+            <div class="col-3 col-md-2 wishlist-stock text-left">
+              <span class="item-stock" style="color: red">購入不可</span>
+            </div>
+            {% else %}
+            <div class="col-3 col-md-2 wishlist-stock text-left">
+              <span class="item-stock" style="color: blue">購入可</span>
+            </div>
+            <div class="col-3 col-md-2 wishlist-add text-left">
+              <a
+                class="btn btn-outline-dark text-uppercase"
+                title="Add to Cart"
+                href="{{url_for('market.detail', id=product.id)}}"
+                >購入する</a
+              >
+            </div>
+            {% endif %} {% if product.rental == True %}
+            <div class="col-3 col-md-2 wishlist-stock text-left">
+              <span class="item-stock" style="color: red">レンタル不可</span>
+            </div>
+            {% else %}
+            <div class="col-3 col-md-2 wishlist-stock text-left">
+              <span class="item-stock" style="color: blue">レンタル可</span>
+            </div>
+            <div class="col-3 col-md-2 wishlist-add text-left">
+              <a
+                class="btn btn-outline-dark text-uppercase"
+                title="Add to Cart"
+                href="{{url_for('market.rental', id=product.id)}}"
+                >レンタルする</a
+              >
+            </div>
+            {% endif %}
+
+            <div class="col-3 col-md-1 text-left">
+              <div class="cart-remove">
+                <a href="#">
+                  <svg width="32px">
+                    <use xlink:href="#trash"></use>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+  </main>
+  {%endblock%}
+</body>

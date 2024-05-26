@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>お会計ページ</title>
+
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/rental.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='css/style.css')}}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Prata&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header></header>
+
+    <nav></nav>
+
+    <h1>お会計</h1>
+    <div class="flex">
+      <img
+        src="{{url_for('detector.image_file',filename=product.image_path)}}"
+      />
+
+      <div class="right">
+        <p class="title"><b>ご注文内容</b></p>
+        <p class="text">
+          商品名：{{product.image_name}}
+          <span class="space"> </span>レンタル価格：{{product.price}}円<br />
+          <!-- 送料<span class="space2">  </span>100円</p> -->
+          <!-- <p>合計<span class="space3"> </span>3000円 -->
+        </p>
+        <font color="red"><p>※レンタル期間は通常7日間です。</p></font>
+        <br />
+        <font size="5px"
+          ><b
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合計：{{product.price}}円</b
+          ></font
+        >
+
+        <form class="radio">
+          <input type="radio" name="payment" value="option1" />PayPay
+          <input type="radio" name="payment" value="option2" />ApplePay
+          <input type="radio" name="payment" value="option3" />ID
+          <input type="radio" name="payment" value="option4" />WAON
+        </form>
+
+        <audio
+          id="audio1"
+          src="{{url_for('static', filename='audios/PayPay.mp3')}}"
+        ></audio>
+        <audio
+          id="audio2"
+          src="{{url_for('static', filename='audios/Apple_Pay.mp3')}}"
+        ></audio>
+        <audio
+          id="audio3"
+          src="{{url_for('static', filename='audios/iD.mp3')}}"
+        ></audio>
+        <audio
+          id="audio4"
+          src="{{url_for('static', filename='audios/WAON.mp3')}}"
+        ></audio>
+
+        <div class="payment-button-container">
+          <a href="{{url_for('market.rentalComplete', id=product.id)}}">
+            <button id="playButton" onclick="redirectToSelected()">
+              支払い
+            </button></a
+          >
+          <button onclick="redirectToPage()">キャンセル</button>
+        </div>
+      </div>
+    </div>
+
+    <audio id="audio" src=""></audio>
+    <script src="{{url_for('static', filename='js/rental.js')}}"></script>
+  </body>
+</html>

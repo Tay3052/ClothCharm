@@ -1,0 +1,118 @@
+/* ファッションイベントページ */
+.card-list {
+    display: block;
+    margin: 1rem auto;
+    padding: 0;
+    font-size: 0;
+    text-align: center;
+    list-style: none;
+  }
+   
+  .card {
+    display: inline-block;
+    width: 90%;
+    max-width: 20rem;
+    margin: 4rem;
+    background-color: #fff;
+    font-size: 1rem;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+  }
+   
+   
+  .card-description {
+    display: block;
+    padding: 1em 0.5em;
+    color: #515151;
+    text-decoration: none;
+  }
+   
+  .card-description > h2 {
+    margin: 0 0 0.5em;
+  }
+   
+  .card-description > p {
+    margin: 0;
+  }
+   
+  .ji{
+    padding: 50px 0 0 0;
+    text-align: center;
+    font-weight: bold;
+  }
+   
+  /* .back{
+    padding: 30px 0 30px 0;
+    text-align: center;
+  } */
+   
+  .fonts{
+    font-size: 50px;
+    color: #515151;
+    text-align: center;
+    /* font-family: 'Bebas Neue', sans-serif; */
+    /* font-family: 'Beth Ellen', cursive;
+    font-family: 'Caveat', cursive;
+    font-family: 'Chewy', cursive; */
+   
+  }
+  .container{
+    display: flex;
+    width: 946px;
+  }
+  .option{
+    text-align: center;
+    margin: 0 auto;
+  }
+  .eventb{
+    background-color: #333;
+    border-radius: 50px;
+    color: #fff;
+    padding: 15px 60px;
+    margin-bottom: 15px;
+  }
+   
+   
+   
+   
+  /* ポップアップメッセージを隠す */
+  .hidden {
+    display: none;
+  }
+   
+  /* ポップアップメッセージを画面右下に配置 */
+  #btn4-text {
+    height: 72px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #ddd;
+    font-weight: bold;
+    text-align: center;
+    line-height: 72px;
+    position: fixed;
+    right: 5%;
+    bottom: 10%;
+  }
+   
+  /* ポップアップアニメーションを3秒かけて実行 */
+  .popup-message {
+    animation: popup 3s forwards;
+  }
+   
+  @keyframes popup {
+    0% {
+      transform: translateY(15%);
+      opacity: 0;
+    }
+    10%, 90% {
+      transform: none;
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(15%);
+      opacity: 0;
+      pointer-events: none;
+    }
+  }

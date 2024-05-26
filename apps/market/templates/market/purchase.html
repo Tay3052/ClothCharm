@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>購入完了ページ</title>
+
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/purchase.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='css/style.css')}}"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=Prata&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header></header>
+
+    <nav></nav>
+
+    <h1><b>ご購入ありがとうございます</b></h1>
+    <div class="flex">
+      <img
+        src="{{url_for('detector.image_file',filename=product.image_path)}}"
+      />
+
+      <div class="right">
+        <p class="title"><b>ご注文内容確認</b></p>
+
+        <p class="text">
+          <b>商品名</b>：{{product.image_name}}<br />
+          <span class="space"> </span
+          >&nbsp;&nbsp;&nbsp;&nbsp;<b>価格</b>：{{product.price}}円<br />
+          <!-- 送料<span class="space2">  </span>100円</p> -->
+          <!-- <p>合計<span class="space3"> </span>3000円 -->
+        </p>
+
+        <br />
+        <font size="5px"
+          ><b
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;合計：{{product.price}}円</b
+          ></font
+        >
+        <div class="link-overlay">
+          <a href="/market/shop">shopへ戻る</a>
+        </div>
+        <!-- <div class="link-overlay">
+                <a href="shop-sidebar.html">取引チャットへ</a>
+            </div> -->
+      </div>
+    </div>
+  </body>
+</html>
