@@ -1,8 +1,4 @@
-# HEW
-バックエンド制作はこちらのブランチを使います。
-
-現状10/31
-・FlaskのBlueprint機能を使って会員認証、画像アップロードができるようになった
-・画像アップロードはログインしてからでないとエラーが出る
-・DBはMySQLを使用、apps/config.pyより自分の環境に合わせて
-　「mysql+pymysql://{user}:{password}@{host}/{db_name}」と設定すれば同期されるはず。
+# HAL学内プログラミングコンテスト(2年次)
+5人のチームでフリマサイトの制作を行いました。
+相談の結果。アパレル専門のサイトにしようと決定し、このようなサイトとなりました。
+参考資料：https://drive.google.com/file/d/1yzYX2hrzCrBNbVK_ogb9PKHQz5ekdEjO/view?usp=drive_link
